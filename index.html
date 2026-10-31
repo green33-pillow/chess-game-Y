@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHESS MIND — AI 체스 코치</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header><div><p class="eyebrow">YOUR PERSONAL CHESS COACH</p><h1>CHESS <span>MIND</span></h1></div><div class="status" id="engineStatus">엔진 준비 중…</div></header>
+    <section class="layout">
+      <div class="board-wrap"><div class="topline"><span>상대 · AI</span><span id="botInfo">Stockfish 16</span></div><div id="board" aria-label="체스판"></div><div class="topline bottom"><span>나 · 백</span><span id="turnInfo">백 차례</span></div>
+      <div class="actions"><button id="newGame">새 게임</button><button id="undo">한 수 무르기</button><button id="flip">보드 뒤집기</button></div></div>
+      <aside><section class="panel"><h2>AI 코치</h2><p class="muted">매 수마다 포지션을 분석하고 핵심 피드백을 제공합니다.</p><div id="feedback" class="feedback">게임을 시작하면 첫 분석을 보여드립니다.</div><div class="eval"><div class="eval-head"><b>포지션 평가</b><strong id="evalText">0.00</strong></div><div class="evalbar"><div id="evalFill"></div></div></div></section>
+      <section class="panel"><h2>기보</h2><ol id="moves" class="moves"><li class="muted">아직 둔 수가 없습니다.</li></ol></section></aside>
+    </section>
+    <footer>분석은 Stockfish 엔진과 기본 체스 규칙에 기반합니다.</footer>
+  </main>
+</body></html>
