@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>CHESS MIND — AI 체스 코치</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header><h1>CHESS <b>MIND</b></h1><span id="status">Stockfish 불러오는 중…</span></header>
+  <div class="grid">
+    <section class="left">
+      <div id="top" class="player"></div>
+      <div id="board"></div>
+      <div id="bottom" class="player"></div>
+      <div id="info"></div>
+      <div class="ctl">
+        <button class="nav" data-act="first" aria-label="처음">⏮</button>
+        <button class="nav" data-act="prev" aria-label="이전 수">◀</button>
+        <button class="nav" data-act="next" aria-label="다음 수">▶</button>
+        <button class="nav" data-act="last" aria-label="마지막">⏭</button>
+        <button id="btn-arrows" data-act="arrows">추천 화살표</button>
+        <button data-act="restart">다시 시작</button>
+        <button id="btn-resign" data-act="resign">게임 종료</button>
+      </div>
+    </section>
+    <section>
+      <div class="tabs" id="tabs">
+        <button data-act="tab:coach">AI 코치</button><button data-act="tab:pos">포지션 분석</button><button data-act="tab:review">게임 리뷰</button>
+      </div>
+      <div id="panel"></div>
+      <div class="card"><div class="t" style="margin-bottom:8px">기보</div><div id="moves"></div></div>
+    </section>
+  </div>
+</main>
+<div id="setup">
+  <div class="box">
+    <h2>새 대국</h2>
+    <label>내 색상</label><div class="opts c2" id="o-color"></div>
+    <label id="l-lvl">AI 난이도</label><div class="opts c3" id="o-lvl"></div>
+    <div class="opts c2"><div><label>시간</label><select id="s-min"></select></div><div><label>코치 분석 깊이</label><select id="s-depth"></select></div></div>
+    <button id="go" disabled>엔진 불러오는 중…</button>
+    <p id="setup-msg" style="margin:10px 0 0;font-size:12px;line-height:1.5;color:#f87171;white-space:pre-line;word-break:break-all"></p>
+  </div>
+</div>
+<script>
+/* script.js 가 실행되지 못했을 때 원인을 화면에 표시 (안전망) */
+(function () {
+  var st = function (m) { var e = document.getElementById("status"); if (e) { e.textContent = m; e.className = "err"; } };
+  window.addEventListener("error", function (e) { st("오류: " + (e.message || "script.js 로드 실패")); });
+  window.addEventListener("unhandledrejection", function (e) { st("오류: " + ((e.reason && e.reason.message) || e.reason)); });
+  setTimeout(function () { if (!window.__cmLoaded) st("script.js 를 실행하지 못했습니다. 파일 경로/업로드 여부를 확인하세요."); }, 5000);
+})();
+</script>
+<script type="module" src="script.js" onerror="document.getElementById('status').textContent='script.js 를 불러오지 못했습니다 (404?)';document.getElementById('status').className='err'"></script>
+</body>
+</html>
