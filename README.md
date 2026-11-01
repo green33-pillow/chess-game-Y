@@ -5,9 +5,8 @@
 ```
 index.html   화면 구조
 style.css    스타일
-script.js    엔진 래퍼 + 분석/등급/피드백 + UI (ES module)
-vendor/chess.js            chess.js 1.4.0 (ESM)
-stockfish/                 Stockfish 16 WASM (single-thread) js + wasm
+script.js    chess.js(인라인) + 엔진 래퍼 + 분석/등급/피드백 + UI
+stockfish/   Stockfish 16 WASM js + wasm — 반드시 함께 배포 (파일 2개)
 vercel.json                캐시 헤더
 ```
 
